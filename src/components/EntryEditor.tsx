@@ -1,20 +1,17 @@
 import { Editor, Monaco, OnChange } from '@monaco-editor/react'
 import { defaultInputEditorValue } from '../constants/defaults'
-import DeepOcean from "../themes/deep-ocean.json"
+import TokyoNight from "../themes/tokyo-night-storm-color-theme.json"
 import { useEditorStore } from '../store/editorStore';
 import { flatten } from 'flat';
 
 const handleEditorDidMount = (monaco: Monaco) => {
-  monaco.editor.defineTheme('DeepOcean', {
+  monaco.editor.defineTheme('TokyoNight', {
     base: 'vs-dark',
     inherit: true,
-    ...DeepOcean,
+    ...TokyoNight,
     rules: []
   });
 };
-
-
-
 
 export const EntryEditor = () => {
   const { setOutputValue } = useEditorStore()
@@ -35,7 +32,7 @@ export const EntryEditor = () => {
 
   return (
     <Editor
-      theme='DeepOcean'
+      theme='TokyoNight'
       language='json'
       height="50vh"
       defaultValue={defaultInputEditorValue}
