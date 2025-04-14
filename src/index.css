@@ -1,3 +1,12 @@
 body {
-  background-color: #000011;
+  margin: 0;
+  background-color: #24283B;
+}
+
+.header {
+  background-color: #92CEEF;
+  color: #24283B;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
 }
