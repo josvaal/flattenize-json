@@ -69,6 +69,12 @@ export const EntryEditor = () => {
             try {
               const parsed = JSON.parse(inputValue);
               const outputValue = value === "flat" ? flatten(parsed) : unflatten(parsed);
+              let typeText = ""
+              JsonToTS(outputValue).forEach(type => {
+                typeText += type
+              })
+              setInterface(typeText)
+
               setOutputValue(JSON.stringify(outputValue, null, 2));
             } catch (err) {
               if (err instanceof Error) {
