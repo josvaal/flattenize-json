@@ -11,7 +11,7 @@ class ResponsiveGrid extends Component<ResponsiveGridProps> {
     const { leftComponent, rightComponent } = this.props;
 
     return (
-      <Row>
+      <Row gutter={[32, 32]} style={{ margin: "0.5rem" }}>
         <Col xs={24} md={12}>
           {leftComponent}
         </Col>

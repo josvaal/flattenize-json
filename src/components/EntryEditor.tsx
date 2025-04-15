@@ -3,6 +3,7 @@ import TokyoNight from "../themes/tokyo-night-storm-color-theme.json"
 import { ConvertionType, useEditorStore } from '../store/editorStore';
 import { flatten, unflatten } from 'flat';
 import { Select } from 'antd';
+import JsonToTS from 'json-to-ts';
 
 const handleEditorDidMount = (monaco: Monaco) => {
   monaco.editor.defineTheme('TokyoNight', {
@@ -14,7 +15,7 @@ const handleEditorDidMount = (monaco: Monaco) => {
 };
 
 export const EntryEditor = () => {
-  const { setOutputValue, type, setType, inputValue, setInputValue } = useEditorStore()
+  const { setOutputValue, type, setType, inputValue, setInputValue, setInterfaceValue: setInterface } = useEditorStore()
 
   const handleChange = (value?: string) => {
     console.log(value)
@@ -25,6 +26,11 @@ export const EntryEditor = () => {
     try {
       const parsed = JSON.parse(jsonText);
       const outputValue = type == "flat" ? flatten(parsed) : unflatten(parsed)
+      let typeText = ""
+      JsonToTS(outputValue).forEach(type => {
+        typeText += type
+      })
+      setInterface(typeText)
       setOutputValue(JSON.stringify(outputValue, null, 2))
     } catch (err) {
       if (err instanceof Error) {

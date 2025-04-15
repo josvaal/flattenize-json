@@ -16,4 +16,13 @@ export const defaultOutputEditorValue =
   "user.name": "Jhon",
   "user.lastname": "Doe"
 }
+`;
+
+export const defaultInterfaceValue =
+  `interface RootObject {
+  id: number;
+  group: string;
+  'user.name': string;
+  'user.lastname': string;
+}
 `
